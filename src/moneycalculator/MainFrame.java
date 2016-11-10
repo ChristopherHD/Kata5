@@ -1,12 +1,17 @@
 package moneycalculator;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import moneycalculator.ui.swing.SwingMoneyDisplay;
 
 public class MainFrame extends JFrame{
     
@@ -17,6 +22,9 @@ public class MainFrame extends JFrame{
         setMinimumSize(new Dimension(400,400));
         setLocationRelativeTo(null);
         this.setMenuBar(menuBar());
+        setLayout(new BorderLayout());
+        add(label(), BorderLayout.NORTH);
+        add(new SwingMoneyDisplay());
         setVisible(true);
     }
 
@@ -46,4 +54,13 @@ public class MainFrame extends JFrame{
             }
         };
     }  
+
+    private JPanel label() {
+        JPanel jPanel = new JPanel();
+        jPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        jPanel.add(new JLabel("A0"));
+        jPanel.add(new JLabel("A1"));
+        jPanel.add(new JLabel("A2"));
+        return jPanel;
+    }
 }
